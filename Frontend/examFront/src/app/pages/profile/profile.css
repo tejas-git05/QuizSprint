@@ -1,0 +1,19 @@
+/* Optional additional styling */
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+/* Animation for the role badge */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.bg-purple-500\/30 {
+  animation: pulse 2s infinite;
+}

@@ -1,0 +1,71 @@
+<div class="max-w-2xl mx-auto">
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="bg-gray-700/50 backdrop-blur-md rounded-xl shadow-xl p-8 text-center">
+    <div class="animate-pulse flex flex-col space-y-4">
+      <div class="h-8 bg-gray-600 rounded w-1/2 mx-auto"></div>
+      <div class="h-24 bg-gray-600 rounded-full w-24 mx-auto"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div *ngFor="let i of [1,2,3,4,5,6]" class="h-16 bg-gray-600 rounded-lg"></div>
+      </div>
+      <div class="h-12 bg-gray-600 rounded-lg w-32 ml-auto"></div>
+    </div>
+  </div>
+
+   <!-- Success state - using safeUser getter -->
+  <div *ngIf="!isLoading && !error" class="bg-gray-700 backdrop-blur-md rounded-xl shadow-xl p-8">
+    <div class="flex flex-col items-center">
+      <h2 class="text-2xl font-light text-white mb-6">Profile Details</h2>
+      <img class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover" 
+           [src]="safeUser.profile" 
+           alt="Profile image"
+           onerror="this.src='good-person.png'"/>
+
+    </div>
+
+    
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <!-- All fields now use safeUser -->
+
+      <div class="bg-white/30 backdrop-blur-sm p-4 rounded-xl">
+        <p class="text-sm font-thin text-purple-100">First Name</p>
+        <p class="text-lg font-medium ">{{ safeUser.firstName }}</p>
+    </div>
+    
+    <div class="bg-white/30 backdrop-blur-sm p-4 rounded-lg">
+     <p class="text-sm font-thin text-purple-100">Last Name</p>
+      <p class="text-lg font-medium ">{{ safeUser.lastName }}</p>
+    </div>
+
+      <div class="bg-white/30 backdrop-blur-sm p-4 rounded-lg">
+        <p class="text-sm font-thin text-purple-100">Email</p>
+        <p class="text-lg font-medium">{{ safeUser.email }}</p>
+      </div>
+
+      <div class="bg-white/30 backdrop-blur-sm p-4 rounded-lg">
+        <p class="text-sm font-thin text-purple-100">Phone</p>
+        <p class="text-lg font-medium ">{{ safeUser.phone }}</p>
+      </div>
+      
+      <div class="bg-white/30 backdrop-blur-sm p-4 rounded-lg">
+        <p class="text-sm font-thin text-purple-100">Account Status</p>
+        <p class="text-lg font-medium ">Active</p>
+      </div>
+      
+      
+      <div class="md:col-span-2 bg-white/30 backdrop-blur-sm p-4 rounded-lg">
+        <p class="text-sm font-thin text-purple-100">Role</p>
+        <p class="text-lg font-medium text-white">
+          <span class="text-lg font-medium "> {{ safeUser.role }}</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+     <button class="px-4 py-2 bg-gray-600 text-white text-base font-thin  hover:bg-[#abbaab] hover:text-black rounded-lg transition-all"
+              (click)="editProfile()">
+        Edit Profile
+      </button>
+    </div>
+  </div>
+</div>

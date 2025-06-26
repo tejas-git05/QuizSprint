@@ -1,0 +1,5 @@
+/* Optional: Add custom glass effect enhancement */
+:host {
+  display: block;
+  height: 100%;
+}

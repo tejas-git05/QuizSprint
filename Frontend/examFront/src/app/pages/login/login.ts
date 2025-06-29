@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 import { LoginService } from '../../services/LoginService/login.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   imports: [CommonModule,FormsModule,ReactiveFormsModule],
@@ -26,9 +25,9 @@ export class Login {
       Swal.fire('Warning', 'Please fill all required fields', 'warning');
       return;
     }
-
+    
     const loginData = {
-      username: this.loginForm.value.userName,
+      userName: this.loginForm.value.userName,
       password: this.loginForm.value.password
     };
 

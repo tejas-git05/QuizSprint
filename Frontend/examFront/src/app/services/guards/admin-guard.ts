@@ -16,7 +16,7 @@ export class AdminGuard implements CanActivate {
     if (this.loginService.isLoggedIn() && this.loginService.getUserRole() === 'ADMIN') {
       return true;
     }
-    
+                    
     // Redirect based on login status
     if (!this.loginService.isLoggedIn()) {
       this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
@@ -24,5 +24,6 @@ export class AdminGuard implements CanActivate {
       this.router.navigate(['/unauthorized']); // Create this route
     }
     return false;
+
   }
 }

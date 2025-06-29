@@ -25,10 +25,7 @@ export const routes: Routes = [
   { path: 'user', component:UserDashboard , canActivate:[AuthGuard] },
 
 
-
-
   { path: '**', component: NotFoundComponent }
-
 
 ];
 

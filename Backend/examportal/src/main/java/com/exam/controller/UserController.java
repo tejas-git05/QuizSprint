@@ -13,6 +13,8 @@ import com.exam.entity.Roles;
 import com.exam.entity.UserRole;
 import com.exam.entity.Users;
 import com.exam.service.UserService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 	
 	@Autowired
@@ -57,7 +60,6 @@ public class UserController {
 		this.userService.deleteUser(userId);
 	}
 	
-	
 	//login
 	@PostMapping("/login")
 	public ResponseEntity<?> loginUser (@RequestBody Map<String, String> loginData)
@@ -75,8 +77,7 @@ public class UserController {
 			return ResponseEntity.status(401).body("Invalid Credentials");
 		}
 		
-		return ResponseEntity.ok(user);
-		
+		return ResponseEntity.ok(user);	
 	}
 	
 }

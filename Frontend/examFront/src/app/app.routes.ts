@@ -3,12 +3,14 @@ import { NotFoundComponent } from './pages/NotFound/not-found/not-found.componen
 import { Signup } from './pages/SignUpPage/signup';
 import { Home } from './pages/Home/home';
 import { Login } from './pages/login/login';
-import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
 import { UserDashboard } from './pages/user-dashboard/user-dashboard';
 import { AuthGuard } from './services/guards/auth-guard';
 import { AdminGuard } from './services/guards/admin-guard';
 import { Profile } from './pages/profile/profile';
-import { Welcome } from './pages/admin-dashboard/welcome/welcome';
+import { AdminDashboard } from './pages/admin/admin-dashboard/admin-dashboard';
+import { Welcome } from './pages/admin/welcome/welcome';
+import { ViewCategory } from './pages/admin/view-category/view-category';
+import { AddCategory } from './pages/admin/add-category/add-category';
 
 
 export const routes: Routes = [
@@ -16,15 +18,19 @@ export const routes: Routes = [
   {path:'',component:Home},
   { path: 'signup', component:Signup  },
   { path: 'login', component:Login},
+
   { path: 'admin', component:AdminDashboard,
     children:[
       {path:'',component:Welcome},
-      {path:'adminprofile',component:Profile}
+      {path:'adminprofile',component:Profile},
+      {path:'viewCategory',component:ViewCategory},
+      {path:'addCategory',component:AddCategory}
     ] 
     ,canActivate:[AdminGuard]},
   { path: 'user', component:UserDashboard , canActivate:[AuthGuard] },
 
 
+  // NO FOUND COMPONENT
   { path: '**', component: NotFoundComponent }
 
 ];

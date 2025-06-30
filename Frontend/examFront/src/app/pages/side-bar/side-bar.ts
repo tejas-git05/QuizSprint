@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/LoginService/login.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,11 +10,13 @@ import { RouterLink } from '@angular/router';
 })
 export class SideBar {
 
+  constructor(private loginService:LoginService, private router:Router){
 
+  }
+  
   logout() {
-    // Implement logout logic
-    console.log('Logout clicked');
-
+   this.loginService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

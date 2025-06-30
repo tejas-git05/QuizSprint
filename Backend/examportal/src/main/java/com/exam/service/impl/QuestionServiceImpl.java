@@ -1,10 +1,9 @@
 package com.exam.service.impl;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.exam.Repository.QuestionRepository;
 import com.exam.entity.exam.Questions;
 import com.exam.entity.exam.Quiz;
@@ -29,12 +28,12 @@ public class QuestionServiceImpl implements QuestionService  {
 
 	@Override
 	public Set<Questions> getQuestions() {
-		return new LinkedHashSet<>(this.questionRepo.findAll());
+		return new HashSet<>(this.questionRepo.findAll());
 	}
 
 	@Override
 	public Questions getQuestionById(Long queId) {
-		return this.questionRepo.getById(queId);
+		return this.questionRepo.findById(queId).get();
 	}
 
 	@Override

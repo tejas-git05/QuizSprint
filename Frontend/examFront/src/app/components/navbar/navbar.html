@@ -7,12 +7,12 @@
   <div class="flex justify-end gap-4 items-center">
     <!-- Show when NOT logged in -->
     <ng-container *ngIf="!isLoggedIn">
-      <button class="btn relative overflow-hidden w-28 h-10 m-2 bg-[#392d69] text-white rounded-lg text-base uppercase font-normal transition-all duration-500 hover:text-[#111]"
+      <button class="btn relative overflow-hidden w-28 h-10 m-2  hover:bg-white/30 backdrop-blur-md text-white rounded-lg  uppercase font-normal transition-all duration-700 hover:text-[#111]"
               routerLink="/login">
         <span class="relative z-10">Login</span>
         <span class="absolute z-0 inset-0 skew-x-[-12deg] scale-x-0 bg-[#d397fa] transition-transform duration-500 ease-in-out hover:scale-x-100"></span>
       </button>
-      <button class="btn relative overflow-hidden w-28 h-10 m-2 bg-[#392d69] text-white rounded-lg text-base uppercase font-normal transition-all duration-500 hover:text-[#111]"
+      <button class="btn relative overflow-hidden w-28 h-10 m-2  hover:bg-white/30 backdrop-blur-md text-white rounded-lg  uppercase font-normal transition-all duration-700 hover:text-[#111]"
               routerLink="/signup">
         <span class="relative z-10">Sign Up</span>
         <span class="absolute z-0 inset-0 skew-x-[-12deg] scale-x-0 bg-[#d397fa] transition-transform duration-500 ease-in-out hover:scale-x-100"></span>

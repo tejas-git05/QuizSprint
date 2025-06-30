@@ -1,5 +1,6 @@
 package com.exam.controller;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -77,7 +78,25 @@ public class UserController {
 			return ResponseEntity.status(401).body("Invalid Credentials");
 		}
 		
-		return ResponseEntity.ok(user);	
+		// Get the User's role
+		String role = "NORMAL"; // Default role
+		if(!user.getUserRole().isEmpty())
+		{
+			role = user.getUserRole().iterator().next().getRole().getRoleName();
+		}
+		
+		//response with role information
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("userId", user.getUserId());
+	    response.put("userName", user.getUserName());
+	    response.put("firstName", user.getFirstName());
+	    response.put("lastName", user.getLastName());
+	    response.put("email", user.getEmail());
+	    response.put("phone", user.getPhone());
+	    response.put("profile", user.getProfile());
+	    response.put("role", role); 
+	    
+		return ResponseEntity.ok(response);	
 	}
 	
 }

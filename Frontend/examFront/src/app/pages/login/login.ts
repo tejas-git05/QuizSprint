@@ -20,36 +20,39 @@ export class Login {
     password : new FormControl('',[Validators.required])
   })
 
-  formSubmit() {
+  // In login.component.ts
+formSubmit() {
     if (this.loginForm.invalid) {
-      Swal.fire('Warning', 'Please fill all required fields', 'warning');
-      return;
+        Swal.fire('Warning', 'Please fill all required fields', 'warning');
+        return;
     }
     
     const loginData = {
-      userName: this.loginForm.value.userName,
-      password: this.loginForm.value.password
+        userName: this.loginForm.value.userName,
+        password: this.loginForm.value.password
     };
 
     this.loginService.login(loginData).subscribe({
-      next: (response: any) => {
-        console.log('Login response : ', response);
-
-        // Store user data in localStorage
-        this.loginService.setUser(response);   
-        // Get user role
-        const role = this.loginService.getUserRole();
-        console.log('Detected Role: ',role);
-        
-       // Handle redirect
-        const returnUrl = this.loginService.redirectUrl || (response.role === 'ADMIN' ? '/admin' : '/user');
-        this.router.navigateByUrl(returnUrl);
-        this.loginService.redirectUrl = null;
-      },
-      error: (error) => {
-        console.error('Login error', error);
-        Swal.fire('Login Failed', error.error || 'Invalid credentials', 'error');
-      }
+        next: (response: any) => {
+            console.log('Login response:', response);
+            
+            // Store user data in localStorage
+            this.loginService.setUser(response);   
+            
+            // Get user role
+            const role = response.role || this.loginService.getUserRole();
+            console.log('Detected Role:', role);
+            
+            // Handle redirect
+            const returnUrl = this.loginService.redirectUrl || 
+                            (role === 'ADMIN' ? '/admin' : '/user');
+            this.router.navigateByUrl(returnUrl);
+            this.loginService.redirectUrl = null;
+        },
+        error: (error) => {
+            console.error('Login error', error);
+            Swal.fire('Login Failed', error.error || 'Invalid credentials', 'error');
+        }
     });
   }
 

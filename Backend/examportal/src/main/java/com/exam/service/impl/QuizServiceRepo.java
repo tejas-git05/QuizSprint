@@ -1,6 +1,6 @@
 package com.exam.service.impl;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class QuizServiceRepo implements QuizService {
 
 	@Override
 	public Set<Quiz> getQuizzes() {
-		return new LinkedHashSet<>(this.quizRepository.findAll());
+		return new HashSet<>(this.quizRepository.findAll());
 	}
 
 	@Override

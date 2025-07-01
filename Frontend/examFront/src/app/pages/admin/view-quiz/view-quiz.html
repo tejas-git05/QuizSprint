@@ -1,0 +1,36 @@
+<div class="max-w-6xl mx-auto p-6">
+
+    <div class="">
+        <h1 class="text-2xl font-normal text-gray-800">Show Quiz</h1>
+    </div>
+
+    <!-- Quiz grid -->
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+        <div *ngFor="let q of Quiz" class="bg-white/80 border border-gray-300 rounded-xl hover:shadow-xl transition-all duration-300 cursor-pointer  ">
+
+            <div class="flex items-center gap-4 p-6">
+                <img src="https://cdn-icons-png.flaticon.com/128/10008/10008802.png" 
+                class="h-10 w-10 ">
+                <!-- Title -->
+                <h2>{{q.title}}</h2>
+            </div>
+
+            <p>{{q.description}}</p>
+            
+            <p>{{q.maxMarks}}</p>
+            <p>{{q.numOfQue}}</p>
+            <p>{{q.active}}</p>
+
+
+
+
+        </div>
+
+
+     </div>
+
+
+
+</div>

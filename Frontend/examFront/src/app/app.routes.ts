@@ -11,6 +11,7 @@ import { AdminDashboard } from './pages/admin/admin-dashboard/admin-dashboard';
 import { Welcome } from './pages/admin/welcome/welcome';
 import { ViewCategory } from './pages/admin/view-category/view-category';
 import { AddCategory } from './pages/admin/add-category/add-category';
+import { ViewQuiz } from './pages/admin/view-quiz/view-quiz';
 
 
 export const routes: Routes = [
@@ -24,7 +25,8 @@ export const routes: Routes = [
       {path:'',component:Welcome},
       {path:'adminprofile',component:Profile},
       {path:'viewCategory',component:ViewCategory},
-      {path:'addCategory',component:AddCategory}
+      {path:'addCategory',component:AddCategory},
+      {path:'viewQuiz',component:ViewQuiz},
     ] 
     ,canActivate:[AdminGuard]},
   { path: 'user', component:UserDashboard , canActivate:[AuthGuard] },

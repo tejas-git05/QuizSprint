@@ -17,7 +17,7 @@
           <input type="text"
                 placeholder="Enter your User Name"
                 formControlName="userName"
-                class="w-full px-4 py-2 text-black border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-black " />
+                class="w-full px-4 py-2 text-black border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 hover:border-black " />
           <div class="text-red-500 mt-1 text-sm" *ngIf="loginForm.get('userName')?.touched && loginForm.get('userName')?.hasError('required')">
             Username is required.
           </div>
@@ -29,7 +29,7 @@
           <input type="password"
                 placeholder="Enter password"
                 formControlName="password"
-                class="w-full px-4 py-2 text-black border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 hover:border-black"/>
+                class="w-full px-4 py-2 text-black border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 hover:border-black"/>
           <div class="text-red-500 mt-1 text-sm" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
             Password is required.
           </div>

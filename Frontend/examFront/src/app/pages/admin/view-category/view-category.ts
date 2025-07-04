@@ -25,7 +25,6 @@ export class ViewCategory implements OnInit {
     } ),
     (error:any) => {
        console.log(error);
-       
     }
   }
 

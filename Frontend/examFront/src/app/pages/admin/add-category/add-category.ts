@@ -37,7 +37,7 @@ export class AddCategory {
     this.categoryService.addCategory(this.categoryForm.value).subscribe({
       next: (response) => {
         Swal.fire({
-          title: 'Success!',
+          title: 'Success!', 
           text: 'Category added successfully',
           icon: 'success',
           confirmButtonText: 'OK'

@@ -12,6 +12,7 @@ import { Welcome } from './pages/admin/welcome/welcome';
 import { ViewCategory } from './pages/admin/view-category/view-category';
 import { AddCategory } from './pages/admin/add-category/add-category';
 import { ViewQuiz } from './pages/admin/view-quiz/view-quiz';
+import { AddQuiz } from './pages/admin/add-quiz/add-quiz';
 
 
 export const routes: Routes = [
@@ -27,6 +28,7 @@ export const routes: Routes = [
       {path:'viewCategory',component:ViewCategory},
       {path:'addCategory',component:AddCategory},
       {path:'viewQuiz',component:ViewQuiz},
+      {path:'addQuiz',component:AddQuiz},
     ] 
     ,canActivate:[AdminGuard]},
   { path: 'user', component:UserDashboard , canActivate:[AuthGuard] },

@@ -1,47 +1,68 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { QuizService } from '../../../services/QuizService/quiz-service';
+import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-quiz',
-  imports: [CommonModule],
+  standalone: true,  // Added this
+  imports: [CommonModule, RouterLink],
   templateUrl: './view-quiz.html',
   styleUrl: './view-quiz.css'
 })
-export class ViewQuiz {
+export class ViewQuiz implements OnInit {
+  
+  quizzes: any[] = [];  // Changed variable name to plural
+  isLoading = false;     // Added loading state
 
-  Quiz = [
-    {
-      qid:12,
-      title:'Basic Of Java',
-      description:'this is ...',
-      maxMarks:100,
-      numOfQue:20,
-      active:'Active'
-    },
-    {
-      qid:13,
-      title:'Basic Of Python',
-      description:'this is ...',
-      maxMarks:100,
-      numOfQue:20,
-      active:'False'
-    },
-    {
-      qid:13,
-      title:'Basic Of Python',
-      description:'this is ...',
-      maxMarks:100,
-      numOfQue:20,
-      active:'False'
-    },
-    {
-      qid:13,
-      title:'Basic Of Python',
-      description:'this is ...',
-      maxMarks:100,
-      numOfQue:20,
-      active:'False'
-    }
-  ]
+  constructor(private quizService: QuizService) { }
+  
+  ngOnInit(): void {
+    this.loadQuizzes();
+  }
 
+  loadQuizzes() {
+    this.isLoading = true;
+    this.quizService.getQuiz().subscribe({
+      next: (data: any) => {
+        this.quizzes = data;
+        this.isLoading = false;
+      },
+      error: (error: any) => {
+        console.error('Error loading quizzes:', error);
+        this.isLoading = false;
+        Swal.fire('Error', 'Failed to load quizzes', 'error');
+      }
+    });
+  }
+
+  deleteQuiz(qId: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isLoading = true;
+        this.quizService.deleteQuiz(qId).subscribe({
+          next: () => {
+            // Corrected filter syntax
+            this.quizzes = this.quizzes.filter((quiz: any) => quiz.qId !== qId);
+            this.isLoading = false;
+            Swal.fire('Deleted!', 'Quiz has been deleted.', 'success');
+          },
+          error: (error) => {
+            this.isLoading = false;
+            console.error('Error deleting quiz:', error);
+            Swal.fire('Error', error.error?.message || 'Failed to delete quiz', 'error');
+          }
+        });
+      }
+    });
+  }
 }

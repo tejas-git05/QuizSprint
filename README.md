@@ -1,4 +1,5 @@
-# 🎓 Exam Portal
+# 🎓 QuizSprint – Online Examination System
+
 
 A full-stack quiz platform for students to attempt quizzes and admins to create/manage them. Built with **Spring Boot** (backend) and **Angular** (frontend).
 

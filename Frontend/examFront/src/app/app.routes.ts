@@ -14,6 +14,7 @@ import { AddCategory } from './pages/admin/add-category/add-category';
 import { ViewQuiz } from './pages/admin/view-quiz/view-quiz';
 import { AddQuiz } from './pages/admin/add-quiz/add-quiz';
 import { UpdateQuiz } from './pages/admin/update-quiz/update-quiz';
+import { ViewQuizQuestions } from './pages/admin/view-quiz-questions/view-quiz-questions';
 
 
 export const routes: Routes = [
@@ -31,6 +32,7 @@ export const routes: Routes = [
       {path:'viewQuiz',component:ViewQuiz},
       {path:'addQuiz',component:AddQuiz},
       {path:'updateQuiz/:qid',component:UpdateQuiz},
+      {path:'viewQuestions/:qid/:title',component:ViewQuizQuestions},
     ] 
     ,canActivate:[AdminGuard]},
   { path: 'user', component:UserDashboard , canActivate:[AuthGuard] },

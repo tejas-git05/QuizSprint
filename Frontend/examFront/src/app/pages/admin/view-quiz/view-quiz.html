@@ -23,7 +23,7 @@
                 <button class="border border-gray-300  p-2 rounded-lg mt-2">Total Questions : {{q.numberOfQuestions}}</button>
                 
                 <div class="flex gap-2 mt-2">
-                    <button class="bg-gray-600 text-white p-2 rounded-lg mt-2">Questions</button><br>
+                    <button [routerLink]="['/admin/viewQuestions', q.qId, q.title]" class="bg-gray-600 text-white p-2 rounded-lg mt-2">Questions</button><br>
                     <button [routerLink]="['/admin/updateQuiz', q.qId]" class="bg-gray-600 text-white p-2 rounded-lg mt-2">Update</button>
                     
                 </div>

@@ -1,0 +1,38 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+  <!-- Page Heading -->
+  <h3 class="text-2xl flex gap-4 font-normal mb-4 text-center sm:text-left">
+    <img src="https://cdn-icons-png.flaticon.com/128/8363/8363913.png" class="h-10 w-10" alt="">
+    View Questions of "{{ qTitle }}"
+  </h3>
+
+  <!-- Questions List -->
+  <div *ngFor="let q of questions; let i = index"
+       class="bg-white border border-gray-300 rounded-xl mb-6 p-5 shadow-sm
+         hover:shadow-md hover:scale-102 transition-transform duration-300">
+
+    <!-- Question Content -->
+    <div class="mb-3">
+      <p class="font-medium text-base sm:text-lg text-gray-900">
+        Q{{ i + 1 }}. {{ q.content }}
+      </p>
+    </div>
+
+    <!-- Options -->
+    <div class="space-y-2 text-sm sm:text-base text-gray-700">
+      <p><span class="font-medium">A)</span> {{ q.option1 }}</p>
+      <p><span class="font-medium">B)</span> {{ q.option2 }}</p>
+      <p><span class="font-medium">C)</span> {{ q.option3 }}</p>
+      <p><span class="font-medium">D)</span> {{ q.option4 }}</p>
+    </div>
+
+    <!-- Answer -->
+    <div class="mt-4">
+      <p class="text-sm text-green-600">✔ Correct Answer:
+        <span class="font-semibold">{{ q.answer }}</span>
+      </p>
+    </div>
+
+  </div>
+
+</div>

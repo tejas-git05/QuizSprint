@@ -24,7 +24,8 @@
                 
                 <div class="flex gap-2 mt-2">
                     <button class="bg-gray-600 text-white p-2 rounded-lg mt-2">Questions</button><br>
-                    <button class="bg-gray-600 text-white p-2 rounded-lg mt-2">Update</button><br>
+                    <button [routerLink]="['/admin/updateQuiz', q.qId]" class="bg-gray-600 text-white p-2 rounded-lg mt-2">Update</button>
+                    
                 </div>
                 <button class="border bg-gray-300 border-gray-800 p-2 rounded-lg mt-2" (click)="deleteQuiz(q.qId)">Delete Quiz</button><br>
 

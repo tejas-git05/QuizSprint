@@ -12,6 +12,7 @@ import { CategoryService } from '../../../services/CategoryService/category-serv
   templateUrl: './add-category.html',
   styleUrl: './add-category.css'
 })
+
 export class AddCategory {
 
    categoryForm = new FormGroup({

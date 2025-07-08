@@ -7,8 +7,12 @@
     <!-- Quiz grid -->
      <div class="grid grid-cols-1 md:grid-cols-2 font-normal lg:grid-cols-3 gap-6">
 
+        <div
+        *ngFor="let q of quizzes; let i = index"
+        [ngClass]="{'opacity-100 translate-y-0': animatedCards[i],
+            'opacity-0 translate-y-4': !animatedCards[i]}"
+        class="bg-white/80 text-[16px] border border-gray-300 rounded-xl transition-all duration-700 ease-out transform hover:scale-[1.03] hover:bg-gray-100 cursor-pointer">
 
-        <div *ngFor="let q of quizzes" class="bg-white/80 text-[16px] border border-gray-300 rounded-xl hover:shadow-xl hover:scale-[1.03] hover:bg-gray-100  transition-all duration-300 cursor-pointer  ">
 
             <div class="flex items-center gap-4 p-6">
                 <img src="https://cdn-icons-png.flaticon.com/128/1306/1306301.png" 

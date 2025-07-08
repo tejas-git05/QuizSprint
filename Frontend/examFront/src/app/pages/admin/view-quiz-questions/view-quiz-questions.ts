@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { QuestionService } from '../../../services/QuestionService/question-service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-view-quiz-questions',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './view-quiz-questions.html',
   styleUrl: './view-quiz-questions.css'
 })

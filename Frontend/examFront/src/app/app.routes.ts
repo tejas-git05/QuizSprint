@@ -15,10 +15,11 @@ import { ViewQuiz } from './pages/admin/view-quiz/view-quiz';
 import { AddQuiz } from './pages/admin/add-quiz/add-quiz';
 import { UpdateQuiz } from './pages/admin/update-quiz/update-quiz';
 import { ViewQuizQuestions } from './pages/admin/view-quiz-questions/view-quiz-questions';
+import { AddQuestions } from './pages/admin/add-questions/add-questions';
 
 
 export const routes: Routes = [
-  
+
   {path:'',component:Home},
   { path: 'signup', component:Signup  },
   { path: 'login', component:Login},
@@ -33,6 +34,7 @@ export const routes: Routes = [
       {path:'addQuiz',component:AddQuiz},
       {path:'updateQuiz/:qid',component:UpdateQuiz},
       {path:'viewQuestions/:qid/:title',component:ViewQuizQuestions},
+      {path:'addQuestions/:qid/:title',component:AddQuestions},
     ] 
     ,canActivate:[AdminGuard]},
   { path: 'user', component:UserDashboard , canActivate:[AuthGuard] },

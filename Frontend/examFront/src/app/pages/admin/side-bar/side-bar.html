@@ -1,45 +1,68 @@
-<!-- Glass effect sidebar -->
-<div class="absolute top-16 left-0 fixed  bg-gray-700 backdrop-blur-md border-r border-white/30 p-4 w-64">
+<!-- Toggle Button (Visible on small screens) -->
+<div class="sm:hidden fixed top-40px left-4 z-50">
+  <button (click)="toggleSidebar()"
+    class="bg-gray-800 text-white p-2 rounded-lg shadow-lg hover:bg-gray-900 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+      viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+</div>
+
+<!-- Sidebar -->
+<div
+  class="fixed top-16 left-0 h-full w-64 bg-gray-700 backdrop-blur-md border-r border-white/30 p-4 z-40 transition-transform duration-300"
+  [ngClass]="{ 'translate-x-0': showSidebar, '-translate-x-full': !showSidebar && screenWidth < 640, 'block': screenWidth >= 640 }">
+
+  <!-- Sidebar content -->
   <h2 class="text-xl mb-6 text-white">Admin Menu</h2>
   <ul class="space-y-1">
-    
-    <a routerLink="/admin" routerLinkActive="bg-white/30 font-medium" class="flex gap-3 block p-3 rounded-lg text-white hover:bg-white/20 transition-all">
-      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/11741/11741038.png"  alt="">
-      <a>Dashboard</a>
+    <a routerLink="/admin" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
+      class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/11741/11741038.png" alt="">
+      <span>Dashboard</span>
     </a>
 
-    <a routerLink="/admin/viewCategory" routerLinkActive="bg-white/30 font-medium" class="flex gap-3 block p-3 rounded-lg text-white hover:bg-white/20 transition-all">
-    <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/718/718970.png"  alt="">
-      <a>Categories</a>
+    <a routerLink="/admin/viewCategory" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
+      class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/718/718970.png" alt="">
+      <span>Categories</span>
     </a>
 
-    <a  routerLink="/admin/addCategory" routerLinkActive="bg-white/30 font-medium" class="flex gap-3 block p-3 rounded-lg text-white hover:bg-white/20 transition-all">
-      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/2312/2312340.png"  alt="">
-      <a>Add Categories</a>
+    <a routerLink="/admin/addCategory" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
+      class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/2312/2312340.png" alt="">
+      <span>Add Categories</span>
     </a>
 
-    <a routerLink="/admin/viewQuiz" routerLinkActive="bg-white/30 font-medium" class="flex gap-3 block p-3 rounded-lg text-white hover:bg-white/20 transition-all">
-      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/3874/3874176.png"  alt="">
-      <a>Quizzes</a>
+    <a routerLink="/admin/viewQuiz" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
+      class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/3874/3874176.png" alt="">
+      <span>Quizzes</span>
     </a>
 
-    <a routerLink="/admin/addQuiz" routerLinkActive="bg-white/30 font-medium" class="flex gap-3 block p-3 rounded-lg text-white hover:bg-white/20 transition-all">
-      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/1149/1149576.png"  alt="">
-      <a>Add Quiz</a>
+    <a routerLink="/admin/addQuiz" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
+      class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/1149/1149576.png" alt="">
+      <span>Add Quiz</span>
     </a>
 
-    <a routerLink="/admin/adminprofile" routerLinkActive="bg-white/30 font-medium" class="flex gap-3 block p-3 rounded-lg text-white hover:bg-white/20 transition-all">
-      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/2102/2102633.png"  alt="">
-      <a>Profile</a>
+    <a routerLink="/admin/adminprofile" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
+      class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/2102/2102633.png" alt="">
+      <span>Profile</span>
     </a>
 
-    <a routerLink="/admin/settings" routerLinkActive="bg-white/30 font-medium" class="flex gap-3 block p-3 rounded-lg text-white hover:bg-white/20 transition-all">
-      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/4873/4873245.png"  alt="">
-      <a>Settings</a>
+    <a routerLink="/admin/settings" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
+      class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/4873/4873245.png" alt="">
+      <span>Settings</span>
     </a>
-    <a (click)="logout()"  class="border-t border-white/20 mt-4 pt-2 block p-3 rounded-lg text-white hover:bg-white/20 transition-all cursor-pointer">
-     <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/6568/6568636.png"  alt="">
-      <a>Logout </a>
+
+    <a (click)="logout()" class="border-t border-white/20 mt-4 pt-2 flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all cursor-pointer">
+      <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/6568/6568636.png" alt="">
+      <span>Logout</span>
     </a>
   </ul>
 </div>

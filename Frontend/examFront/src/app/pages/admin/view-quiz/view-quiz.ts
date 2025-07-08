@@ -15,6 +15,7 @@ export class ViewQuiz implements OnInit {
   
   quizzes: any[] = [];  // Changed variable name to plural
   isLoading = false;     // Added loading state
+  animatedCards:boolean[]=[];
 
   constructor(private quizService: QuizService) { }
   
@@ -28,10 +29,18 @@ export class ViewQuiz implements OnInit {
       next: (data: any) => {
         this.quizzes = data;
         this.isLoading = false;
+
+        // Start animation after quizzes are set
+        this.animatedCards = Array(this.quizzes.length).fill(false);
+        this.quizzes.forEach((_, index) => {
+          setTimeout(() => {
+            this.animatedCards[index] = true;
+          }, index * 400); // 100ms staggered delay
+        });
       },
       error: (error: any) => {
-        console.error('Error loading quizzes:', error);
         this.isLoading = false;
+        console.error('Error loading quizzes:', error);
         Swal.fire('Error', 'Failed to load quizzes', 'error');
       }
     });

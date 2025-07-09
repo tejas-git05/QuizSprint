@@ -40,6 +40,20 @@ export class Navbar implements OnInit, OnDestroy {
     this.user = this.loginService.getUser();
   }
 
+  //for logo and title redirect role based
+  getHomeLink(){
+    
+    let role = this.loginService.getUserRole();
+    
+    if(role=="NORMAL"){
+      return '/'
+    } else if (role=="ADMIN") {
+      return '/admin/'
+    }
+    
+    return ''
+  }
+
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['/login']);

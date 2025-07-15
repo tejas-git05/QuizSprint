@@ -26,7 +26,8 @@ constructor(
   private route: ActivatedRoute,
   private quizService: QuizService,
   private categoryService: CategoryService,
-  private fb: FormBuilder
+  private fb: FormBuilder,
+  private router:Router
 ) {}
 
 ngOnInit(): void {
@@ -76,7 +77,11 @@ ngOnInit(): void {
     this.quizService.updateQuiz(updatedQuiz).subscribe(
       (response) => {
         console.log('Quiz updated successfully', response);
-        Swal.fire('Success', 'Quiz updated successfully', 'success');
+        Swal.fire('Success', 'Quiz updated successfully', 'success').then(
+          () => {
+            this.router.navigate(['/admin/viewQuiz']);
+          }
+        )
       },
       (error) => {
         console.error('Error updating quiz', error);

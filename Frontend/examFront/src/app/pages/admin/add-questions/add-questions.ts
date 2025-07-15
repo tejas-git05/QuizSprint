@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from '../../../services/QuestionService/question-service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-add-questions',
   imports: [CommonModule,FormsModule,ReactiveFormsModule],
@@ -46,9 +47,6 @@ export class AddQuestions implements OnInit {
 
       }
     )
-     
-    
-
   }
 
 

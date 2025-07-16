@@ -38,7 +38,7 @@ A full-stack quiz platform for students to attempt quizzes and admins to create/
 - Angular 20
 - Reactive Forms & HttpClient
 - SweetAlert2 for modals
-- Bootstrap or Tailwind CSS
+- Tailwind CSS
 
 ---
 

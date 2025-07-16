@@ -16,15 +16,16 @@ class="top-16 left-0 h-full w-64 bg-gray-700 backdrop-blur-md border-r border-wh
 [ngClass]="{ 'translate-x-0': showSidebar, '-translate-x-full': !showSidebar && screenWidth < 640, 'block': screenWidth >= 640 }">
 
 <!-- Sidebar content -->
-<h2 class="text-xl mb-6 text-white">Menu</h2>
+<h2 class="text-xl mb-6 text-white">All Quizzes</h2>
 <ul class="space-y-1">
     <a routerLink="/admin" (click)="handleSidebarLinkClick()" routerLinkActive="bg-white/30 font-medium"
     class="flex gap-3 p-3 rounded-lg text-white hover:bg-white/20 transition-all" *ngFor="let c of categories">
-    <img class="h-6" src="https://cdn-icons-png.flaticon.com/128/3596/3596986.png" alt="">
+    
+    <img src="https://cdn-icons-gif.flaticon.com/19009/19009706.gif" class="h-6  rounded-lg" autoplay loop  >
     <span>{{c.title}}</span>
 </a>
 
 
 </ul>
-{{categories | json }}
+
 </div>

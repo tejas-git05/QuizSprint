@@ -44,8 +44,7 @@ export class LoginService {
   // Get user role
   public getUserRole():string {
     const user = this.getUser();
-    console.log('Full user object',user);
-  
+    // console.log('Full user object',user);
     return user?.role || '';
   }
   

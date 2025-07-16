@@ -1,0 +1,32 @@
+<div class="max-w-6xl mx-auto p-6">
+
+    <div class="mb-5">
+        <h1 class="text-2xl font-normal text-gray-800" >All Quizzes</h1>
+    </div>
+
+ <!-- Quiz cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 font-normal lg:grid-cols-3 gap-6">
+
+    <div *ngFor="let quiz of quizzes" 
+     class="bg-white/80 text-[16px] border border-gray-300 rounded-xl transition-all duration-700 ease-out transform hover:scale-[1.03] hover:bg-white cursor-pointer" >
+
+        <!-- title and img-->
+         <div class="flex items-center gap-4 p-6">
+           <img src="https://cdn-icons-png.flaticon.com/128/1306/1306301.png" 
+                class="h-10 w-10 ">
+            <h2>{{quiz.title}} <br> <span class="text-[12px] mt-1"> {{quiz.category.title}} </span></h2>
+         </div>
+
+         <div class="text-lg font-normal px-4 pb-3 text-gray-900">
+            <p>{{quiz.description}}</p>
+            <button class="border border-gray-300  p-2 rounded-lg mt-2">Marks : {{quiz.maxMarks}}</button>
+            <button class="border border-gray-300  p-2 rounded-lg mt-2">Total Questions : {{quiz.numberOfQuestions}}</button>
+            
+            <button class="border bg-gray-700 text-white p-2 px-4 rounded-lg mt-2">Start</button>
+         </div>
+
+    </div>
+
+    </div>
+
+</div>

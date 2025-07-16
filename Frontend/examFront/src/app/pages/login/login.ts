@@ -45,7 +45,7 @@ formSubmit() {
             
             // Handle redirect
             const returnUrl = this.loginService.redirectUrl || 
-                            (role === 'ADMIN' ? '/admin' : '/user');
+                            (role === 'ADMIN' ? '/admin' : '/user/0');
             this.router.navigateByUrl(returnUrl);
             this.loginService.redirectUrl = null;
         },

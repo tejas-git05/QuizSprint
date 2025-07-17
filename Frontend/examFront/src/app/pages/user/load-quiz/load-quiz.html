@@ -1,7 +1,7 @@
 <div class="max-w-6xl mx-auto p-6">
 
     <div class="mb-5">
-        <h1 class="text-2xl font-normal text-gray-800" >All Quizzes</h1>
+        <span class="text-2xl font-normal text-gray-800 border border-gray-700 p-3 rounded-xl" >Available Quizzes</span>
     </div>
 
  <!-- Quiz cards -->
@@ -22,11 +22,17 @@
             <button class="border border-gray-300  p-2 rounded-lg mt-2">Marks : {{quiz.maxMarks}}</button>
             <button class="border border-gray-300  p-2 rounded-lg mt-2">Total Questions : {{quiz.numberOfQuestions}}</button>
             
-            <button class="border bg-gray-700 text-white p-2 px-4 rounded-lg mt-2">Start</button>
+            <button class="border bg-gray-700 text-white p-2 px-4 rounded-lg mt-3 ">Start</button>
          </div>
 
     </div>
 
+    </div>
+
+    <div class="text-normal" *ngIf="quizzes.length == 0">
+        <img src="https://cdn-icons-gif.flaticon.com/17771/17771143.gif" class="h-30 w-30 rounded-xl mx-auto mb-3 shadow-lg">
+         <h2 class="text-gray-800 text-normal">No Quizzes Available In This Category.</h2>
+         <p class="text-gray-500">Please check back later or create a new quiz.</p>
     </div>
 
 </div>

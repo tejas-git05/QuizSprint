@@ -34,4 +34,9 @@ export class QuizService {
     return this.http.put(`${baseUrl}/quiz/`,quiz);
   }
 
+  // get quizzes by category
+  public getQuizzesByCategory(catId:any) {
+    return this.http.get(`${baseUrl}/quiz/category/${catId}`);
+  }
+
 }

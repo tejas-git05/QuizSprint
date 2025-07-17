@@ -46,7 +46,7 @@ export class Navbar implements OnInit, OnDestroy {
     let role = this.loginService.getUserRole();
     
     if(role=="NORMAL"){
-      return '/'
+      return '/user/0'
     } else if (role=="ADMIN") {
       return '/admin/'
     }

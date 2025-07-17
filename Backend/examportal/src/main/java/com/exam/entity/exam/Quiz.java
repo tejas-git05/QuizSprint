@@ -25,8 +25,7 @@ public class Quiz {
 	private String description;
 	private int maxMarks;
 	private int numberOfQuestions;
-	private boolean active = false;
-	
+		
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
@@ -41,13 +40,13 @@ public class Quiz {
 	}
 
 	// Parameterized constructor
-	public Quiz(String title, String description, int maxMarks, int numberOfQuestions, boolean active) {
+	public Quiz(String title, String description, int maxMarks, int numberOfQuestions) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.maxMarks = maxMarks;
 		this.numberOfQuestions = numberOfQuestions;
-		this.active = active;
+		
 	}
 	
 	// Getter and setters
@@ -115,19 +114,6 @@ public class Quiz {
 	public void setNumberOfQuestions(int numberOfQuestions) {
 		this.numberOfQuestions = numberOfQuestions;
 	}
-
-
-	public boolean isActive() {
-		return active;
-	}
-
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-	
-	
-	
 	
 
 }

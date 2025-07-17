@@ -18,9 +18,12 @@ export class LoadQuiz {
   constructor( private route: ActivatedRoute, private quizService: QuizService ) { }
 
   ngOnInit() {
-    this.catId =  this.route.snapshot.params['catId'];
     
-    if(this.catId == 0) {
+    this.route.params.subscribe((params) => {
+      this.catId =  params['catId'];
+      console.log(params);
+
+      if(this.catId == 0) {
       console.log("Loading all quizzes");
 
       this.quizService.getQuiz().subscribe(
@@ -34,9 +37,20 @@ export class LoadQuiz {
 
     } else {
       console.log("Loading specific");
-      
+      this.quizService.getQuizzesByCategory(this.catId).subscribe(
+        (data:any) => {
+          this.quizzes = data;
+        }, (error:any) => {
+          Swal.fire('Error', 'Failed to load quizzes for category', 'error');
+          console.error('Error loading quizzes by category:', error);
+        } 
+      )
     }
+     });
     
   }
+
+    
+    
 
 }

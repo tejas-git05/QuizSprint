@@ -1,7 +1,7 @@
 <div class="max-w-6xl mx-auto p-6">
 
     <div class="mb-5">
-        <span class="text-2xl font-normal text-gray-800 border border-gray-700 p-3 rounded-xl" >Available Quizzes</span>
+        <span class="text-2xl font-normal text-gray-800 border-x-3 border-gray-700 p-3 rounded-xl" >Available Quizzes</span>
     </div>
 
  <!-- Quiz cards -->
@@ -22,7 +22,7 @@
             <button class="border border-gray-300  p-2 rounded-lg mt-2">Marks : {{quiz.maxMarks}}</button>
             <button class="border border-gray-300  p-2 rounded-lg mt-2">Total Questions : {{quiz.numberOfQuestions}}</button>
             
-            <button class="border bg-gray-700 text-white p-2 px-4 rounded-lg mt-3 ">Start</button>
+            <button [routerLink]="['/user/instructions/', quiz.qId]" class="border bg-gray-700 text-white p-2 px-4 rounded-lg mt-3 ">Start</button>
          </div>
 
     </div>

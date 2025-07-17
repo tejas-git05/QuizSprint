@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { QuizService } from '../../../services/QuizService/quiz-service';
 import Swal from 'sweetalert2';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-load-quiz',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './load-quiz.html',
   styleUrl: './load-quiz.css'
 })

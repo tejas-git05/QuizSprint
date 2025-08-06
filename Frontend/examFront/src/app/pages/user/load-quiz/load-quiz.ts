@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class LoadQuiz {
 
   catId:any;
-  quizzes:any;
+  quizzes:any[] = [];
 
   constructor( private route: ActivatedRoute, private quizService: QuizService ) { }
 

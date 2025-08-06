@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
+import { filter } from 'rxjs';
 
 
 @Component({
@@ -12,6 +13,19 @@ import { Navbar } from './components/navbar/navbar';
 })
 export class App {
   protected title = 'examFront';
+
+  constructor(private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      window.scrollTo(0, 0);
+      
+      // Alternative if window scrolling doesn't work
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  }
+
 }
 
 

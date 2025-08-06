@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './pages/NotFound/not-found/not-found.component';
 import { Signup } from './pages/SignUpPage/signup';
 import { Home } from './pages/Home/home';
@@ -18,6 +18,8 @@ import { ViewQuizQuestions } from './pages/admin/view-quiz-questions/view-quiz-q
 import { AddQuestions } from './pages/admin/add-questions/add-questions';
 import { LoadQuiz } from './pages/user/load-quiz/load-quiz';
 import { Instructions } from './pages/user/instructions/instructions';
+import { StartExam } from './pages/user/start-exam/start-exam';
+import { NgModule } from '@angular/core';
 
 
 export const routes: Routes = [
@@ -49,10 +51,21 @@ export const routes: Routes = [
     ]
     , canActivate:[AuthGuard] },
 
+    // start exam
+    {path: 'startExam/:qid', component:StartExam, canActivate:[AuthGuard]},
 
   // NO FOUND COMPONENT
   { path: '**', component: NotFoundComponent }
 
 ];
 
-export class AppRoutingModule {}
+@NgModule({
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'top',
+    anchorScrolling: 'enabled'
+  })],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {
+  
+}

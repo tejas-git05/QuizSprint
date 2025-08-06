@@ -3,6 +3,7 @@ html, body {
         height: 100vh; 
         background-image: linear-gradient(to left,#abbaab,#ffffff);
         color: black;
+        scroll-behavior: smooth;
 }
 
 body { margin: 0; font-family: Verdana, Geneva, Tahoma, sans-serif; }

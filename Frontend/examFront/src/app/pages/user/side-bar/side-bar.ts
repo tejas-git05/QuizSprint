@@ -52,4 +52,11 @@ export class SideBarUser implements OnInit {
     this.showSidebar = !this.showSidebar;
   }
 
+  
+  closeSidebar(): void {
+    if (this.screenWidth < 768) {
+      this.showSidebar = false;
+    }
+  }
+
 }

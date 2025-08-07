@@ -59,14 +59,6 @@ export class Navbar implements OnInit, OnDestroy {
     this.router.navigate(['/login']);
   }
 
-  toggleDropdown(): void {
-    this.showDropdown = !this.showDropdown;
-  }
-
-  closeDropdown(): void {
-    this.showDropdown = false;
-  }
-
   // Close dropdown when clicking outside
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent): void {
@@ -75,5 +67,27 @@ export class Navbar implements OnInit, OnDestroy {
       this.closeDropdown();
     }
   }
+
+  mobileMenuOpen = false;
+  
+
+toggleMobileMenu() {
+  this.mobileMenuOpen = !this.mobileMenuOpen;
+  this.showDropdown = false;
+}
+
+toggleDropdown() {
+  this.showDropdown = !this.showDropdown;
+  this.mobileMenuOpen = false;
+}
+
+closeDropdown() {
+  this.showDropdown = false;
+}
+
+closeMobileMenu() {
+  this.mobileMenuOpen = false;
+}
+
 
 }

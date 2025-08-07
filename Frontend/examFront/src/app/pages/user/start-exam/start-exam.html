@@ -1,12 +1,13 @@
-<div class="main max-w-6xl p-4 md:p-6 mx-auto bg-gray-50 min-h-screen" *ngIf="!isSubmitted">
+<div class="mt-12 max-w-6xl p-4 md:px-6 mx-auto bg-gray-50 min-h-screen" *ngIf="!isSubmitted">
 
   <!-- Exam Header -->
-  <div class="bg-white rounded-xl shadow-md p-4 md:p-6 mb-4 md:mb-6 border border-gray-200">
+  <div class="bg-white rounded-xl shadow-md p-4 md:p-6 mb-3 md:mb-3 border border-gray-200">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
       <h1 class="text-base md:text-lg font-semibold text-gray-800">{{questions[0]?.quiz?.title || 'Exam'}}</h1>
       <div class="flex items-center gap-4">
-        <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-          For Time
+        <div class="flex gap-2 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+          <img src="https://cdn-icons-png.flaticon.com/128/2936/2936928.png" class="h-[20px]" alt="">
+          Time Left:  <b>{{ formattedTime}}</b>
         </div>
         <span class="text-gray-600 text-sm md:text-base">
           Question {{currentQuestion +1 }} / {{questions.length}}
@@ -22,7 +23,7 @@
     </div>
   </div>
 
-  <!-- ✅ Responsive Layout -->
+  <!-- Responsive Layout -->
   <div class="flex flex-col md:flex-row gap-6 mt-6">
 
     <!-- Left Column: Question Section -->
@@ -39,15 +40,16 @@
             <!-- Options -->
             <div class="space-y-3">
               <label *ngFor="let opt of ['option1','option2','option3','option4']"
-                     class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-50 cursor-pointer"
-                     [class.bg-blue-50]="selectedAnswers[question.id] === question[opt]">
+                     class="flex items-center space-x-3 p-3 rounded-xl cursor-pointer transition-all"
+                     [ngClass]="{'bg-gray-700 text-white': question.givenAnswer === question[opt],
+           'hover:bg-gray-100': question.givenAnswer !== question[opt]}">
 
                 <input type="radio" name="question-{{question.queId}}"
-                      [value]="question[opt]" class="h-5 w-5 text-gray-600 border-gray-300 focus:ring-gray-500"
+                      [value]="question[opt]" class="h-5 w-5 accent-gray-700 focus:ring-0"
                       (change)="selectAnswer(question.queId, opt)"
                       [checked]="selectedAnswers[question.id] === opt"
                       [(ngModel)]="question.givenAnswer" >
-                <span class="text-gray-800">{{question[opt]}}</span>
+                <span>{{question[opt]}}</span>
               </label>
             </div>
           </div>
@@ -76,7 +78,7 @@
       </div>
     </div>
 
-    <!-- ✅ Right Column: Question Navigation -->
+    <!-- Right Column: Question Navigation -->
     <div class="w-full md:w-64 bg-white rounded-xl shadow-md p-4 md:p-6 border border-gray-200 md:sticky md:top-6">
       <h3 class="text-lg font-medium text-gray-800 mb-4">Question Navigation</h3>
       <div class="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-4 gap-2">
@@ -85,7 +87,7 @@
           (click)="goToQuestion(i)"
           [class.bg-gray-300]="currentQuestion === i"
           [class.bg-gray-100]="currentQuestion !== i"
-          class="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 hover:bg-blue-50 border border-gray-200">
+          class="h-10 w-10 rounded-md flex items-center justify-center text-gray-700 hover:bg-blue-100 border border-gray-200">
           {{i+1}}
         </button>
       </div>
@@ -95,7 +97,7 @@
   
 </div>
 
-<!-- ✅ Show the result after submission -->
+<!-- Show the result after submission -->
 <div *ngIf="isSubmitted" class="max-w-3xl mx-auto p-6  min-h-screen flex flex-col items-center justify-center animate-fade-in">
 
   <!-- Animation Image (Lottie or GIF) -->
@@ -129,8 +131,8 @@
 
     <!-- Action Button -->
     <div class="mt-8 flex gap-4 justify-center">
-      <button (click)="isSubmitted = false" class="px-6 py-3 bg-gray-700 text-white text-lg rounded-lg hover:bg-gray-800 transition">
-        Back to Exam
+      <button  class="px-6 py-3 bg-gray-700 text-white text-lg rounded-lg hover:bg-gray-800 transition">
+        Back to Quizzes
       </button>
       <button class="px-6 py-3 bg-gray-700 text-white text-lg rounded-lg hover:bg-gray-800 transition">
         Print
